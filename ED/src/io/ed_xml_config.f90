@@ -414,6 +414,8 @@ recursive subroutine read_ed_xml_config(filename)
 
            call getConfigREAL  ('Vm0','pft',i,rval,texist)
            if(texist) Vm0(myPFT) = real(rval)
+	   call getConfigREAL  ('wat_dry_ratio_grn','pft',i,rval,texist)
+	   if(texist) wat_dry_ratio_grn(myPFT) = real(rval)
            call getConfigINT   ('phenology','pft',i,ival,texist)
            if(texist) phenology(myPFT) = ival
            call getConfigREAL  ('q','pft',i,rval,texist)
@@ -1256,6 +1258,7 @@ subroutine write_ed_xml_config
         call putConfigREAL("b1Ht",b1Ht(i))
         call putConfigREAL("b2Ht",b2Ht(i))
         call putConfigREAL("Vm0",Vm0(i))
+        call putConfigREAL("wat_dry_ratio_grn",wat_dry_ratio_grn(i))
         call putConfigINT("phenology",phenology(i))
         call putConfigREAL("q",q(i))
         call putConfigREAL8("clumping",clumping_factor(i))
